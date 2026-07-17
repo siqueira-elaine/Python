@@ -1,0 +1,39 @@
+python -m venv nome_do_arquivo = para trazer as pastas relacionadas ao ambiente virtual
+
+nome do arquivo\Scripts\activate = para iniciaizar o ambiente virtual
+
+Uma alternativa mais segura é usar o maior índice atual:
+df.loc[df.index.max() + 1] = novaLinha
+
+Outra opção muito comum é redefinir os índices periodicamente:
+df = df.reset_index(drop=True)
+
+
+Na escrita, assim:
+
+df.loc[indice] = novaLinha
+índice inexistente → cria a linha.
+
+df.iloc[indice] = novaLinha
+índice inexistente → erro.
+
+Na leitura, ambas opções se índice inexistente → erro.
+
+
+Nova coluna:
+dataFrame[nome_coluna] = dados_coluna
+| Código                                | Resultado                           |
+| ------------------------------------- | ----------------------------------- |
+| `df['col'] = [1, 2]` (4 linhas no DF) | ❌ Erro de tamanho                   |
+| `df['col'] = pd.Series([1, 2])`       | ✅ Completa o restante com `NaN`     |
+| `df['col'] = 1`                       | ✅ Repete o valor em todas as linhas |
+
+
+Essa linha salva o DataFrame em um arquivo CSV:
+dataFrame.to_csv("ex01.csv", sep=";", index=False)
+index=False → não grava a coluna de índice do pandas no arquivo
+
+columns() = lista as colunas do DataFrame
+info() = traz as informações do DataFrame
+describe() = estatisticas do DataFrame
+:,.quantidade_de_casasf = para exibir a quantidade de casas decimais desejadas
